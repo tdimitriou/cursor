@@ -1,10 +1,9 @@
 # Legacy project reorganization — decisions log
 
-Status: **clarifications in progress** (not ready for execution yet)
+Status: **Brief ready for operator confirmation of remaining defaults**  
+Companion: [`AGENT_HANDOFF.md`](./AGENT_HANDOFF.md)
 
-Companion draft brief: [`AGENT_HANDOFF.md`](./AGENT_HANDOFF.md) — locked sections filled; open questions marked.
-
-## Locked decisions
+## Locked decisions (explicitly confirmed)
 
 | # | Topic | Decision |
 |---|---|---|
@@ -16,30 +15,30 @@ Companion draft brief: [`AGENT_HANDOFF.md`](./AGENT_HANDOFF.md) — locked secti
 | 6 | Cursor data | Keep/restore Cursor AppData transcripts when moving repos; do not treat as disposable. |
 | 7 | Languages / tools | VB6, C/C++, PHP, B4A, B4J, Java, JavaScript, VBScript, VB.NET, TwinBasic, Delphi/Pascal, SQL, **Python**; VS6, modern VS, VS Code, TwinBasic IDE, B4A/B4J, Lazarus, Delphi, PHPRunner, AppGini. |
 | 8 | Project detection | Formal project files from those tools **and** loose source trees without project files (do **not** ignore). |
-| 9 | Variants | Keep all variants except when project/source files are **fully identical**. |
-| 10 | Exact duplicates | Policy **B**: move extras to quarantine with keep/remove log; purge later after approval. |
-| 11 | Origin labeling | Label authored / downloaded / unknown using path hints, site names, licenses, readmes, etc. |
-| 12 | Origin in paths? | **No** origin-based subfolders (e.g. not `vbaccelerator\`). Origin goes in catalog metadata. |
-| 13 | Reorg root | **`E:\Dev`** (reorganize on E: first; optional later move to `C:\Dev`). |
-| 14 | Copy vs move | **Move** on E: (not copy). |
-| 15 | Taxonomy | Provisional only; refine after first inventory pass. Start with `E:\Dev\_inventory\`. |
-| 16 | Move mode | **C**: auto-move only under **user-approved rules**; uncertain → propose / `unclassified`. |
-| 17 | Catalog format | **C**: SQLite as master + XLSX exports. Possible later Python web UI to browse inventory. |
-| 18 | Archives | Scan compressed archives too (zip/7z/rar/etc.), especially under Downloads; may coexist with extracted trees or be unextracted only. |
-| 19 | Languages (update) | Also include **Python** project detection. |
+| 9 | Archives | Scan compressed archives (zip/7z/rar/tar/gz/…), especially Downloads; may coexist with extracted trees or be unextracted only. Link archive ↔ extracted siblings when possible. |
+| 10 | Variants | Keep all variants except when project/source files are **fully identical**. |
+| 11 | Exact duplicates | Policy **B**: move extras to quarantine with keep/remove log; purge later after approval. |
+| 12 | Origin labeling | Label authored / downloaded / unknown using path hints, site names, licenses, readmes, etc. |
+| 13 | Origin in paths? | **No** origin-based subfolders. Origin goes in catalog metadata only. |
+| 14 | Reorg root | **`E:\Dev`** (reorganize on E: first; optional later move to `C:\Dev`). |
+| 15 | Copy vs move | **Move** on E: (not copy). |
+| 16 | Taxonomy | Provisional only; refine after first inventory pass. Start with `E:\Dev\_inventory\`. |
+| 17 | Move mode | **C**: auto-move only under **user-approved rules**; uncertain → propose / `unclassified`. |
+| 18 | Catalog format | **C**: SQLite as master + XLSX exports. Schema should stay friendly for a future Python web UI. |
 
-## Open questions (ask user one-by-one)
+## Remaining defaults (please confirm or correct)
 
-- [x] Catalog format: **C — SQLite master + XLSX exports** (may later add a small Python web UI to browse inventory)
-- [x] Also scan **compressed archives**; Downloads may have archive + extracted siblings
-- [x] Include **Python** in project identification
-- [ ] Execution style: generate scripts vs interactive agent scanning
-- [ ] Overnight / resumable runs OK?
-- [ ] Priority clusters first (POS, add-ins, DB) vs full equal pass?
-- [ ] Hard safety: anything never move/delete without explicit OK?
-- [ ] Secrets/.env handling in reports
-- [ ] How to treat existing `C:\Dev` work (e.g. POS) vs E: reorganization
-- [ ] Workspace path for the Local agent (`E:\Dev\_inventory` recommended)
+These were not each answered one-by-one; they are the recommended defaults so the handoff can be used. Reply **“accept defaults”** or list changes.
+
+| ID | Topic | Recommended default |
+|---|---|---|
+| Q13 | Execution style | **Hybrid (C):** resumable scripts for bulk inventory; agent for classification, judgment, reports |
+| Q14 | Long runs | Overnight OK; must be **resumable** after reboot |
+| Q15 | Priority | Full inventory first; then prioritize move-rule batches for **POS**, **VB6 add-ins**, **DB-access** |
+| Q16 | Hard safety | Never empty quarantine / delete sources without explicit OK; never touch `C:\Dev` active work without asking; never wipe Windows/PF unless asked |
+| Q17 | Secrets | Do not export secret values into XLSX; record only that sensitive files exist |
+| Q18 | Existing `C:\Dev` | Leave alone in phase 1; note name overlaps in catalog |
+| Q19 | Agent workspace | Local agent on `E:\Dev\_inventory`, with access to scan `E:\` (multi-root if needed) |
 
 ## Provisional scaffold (may change after pass 1)
 
@@ -51,7 +50,6 @@ E:\Dev\
   db-access\
   libraries\
   tools\
-  downloaded\              # optional; may be metadata-only instead
   experiments\
   unclassified\
   duplicates-quarantine\
