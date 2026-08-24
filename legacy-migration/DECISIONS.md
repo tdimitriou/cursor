@@ -14,7 +14,7 @@ Companion draft brief: [`AGENT_HANDOFF.md`](./AGENT_HANDOFF.md) — locked secti
 | 4 | Free space | ~39 GB free of 439 GB. Prefer not to delete OS junk yet. |
 | 5 | Scan skips (for now) | Skip `Windows`, `Program Files`, `Program Files (x86)`. Review other roots later. |
 | 6 | Cursor data | Keep/restore Cursor AppData transcripts when moving repos; do not treat as disposable. |
-| 7 | Languages / tools | VB6, C/C++, PHP, B4A, B4J, Java, JavaScript, VBScript, VB.NET, TwinBasic, Delphi/Pascal, SQL; VS6, modern VS, VS Code, TwinBasic IDE, B4A/B4J, Lazarus, Delphi, PHPRunner, AppGini. |
+| 7 | Languages / tools | VB6, C/C++, PHP, B4A, B4J, Java, JavaScript, VBScript, VB.NET, TwinBasic, Delphi/Pascal, SQL, **Python**; VS6, modern VS, VS Code, TwinBasic IDE, B4A/B4J, Lazarus, Delphi, PHPRunner, AppGini. |
 | 8 | Project detection | Formal project files from those tools **and** loose source trees without project files (do **not** ignore). |
 | 9 | Variants | Keep all variants except when project/source files are **fully identical**. |
 | 10 | Exact duplicates | Policy **B**: move extras to quarantine with keep/remove log; purge later after approval. |
@@ -25,10 +25,14 @@ Companion draft brief: [`AGENT_HANDOFF.md`](./AGENT_HANDOFF.md) — locked secti
 | 15 | Taxonomy | Provisional only; refine after first inventory pass. Start with `E:\Dev\_inventory\`. |
 | 16 | Move mode | **C**: auto-move only under **user-approved rules**; uncertain → propose / `unclassified`. |
 | 17 | Catalog format | **C**: SQLite as master + XLSX exports. Possible later Python web UI to browse inventory. |
+| 18 | Archives | Scan compressed archives too (zip/7z/rar/etc.), especially under Downloads; may coexist with extracted trees or be unextracted only. |
+| 19 | Languages (update) | Also include **Python** project detection. |
 
 ## Open questions (ask user one-by-one)
 
 - [x] Catalog format: **C — SQLite master + XLSX exports** (may later add a small Python web UI to browse inventory)
+- [x] Also scan **compressed archives**; Downloads may have archive + extracted siblings
+- [x] Include **Python** in project identification
 - [ ] Execution style: generate scripts vs interactive agent scanning
 - [ ] Overnight / resumable runs OK?
 - [ ] Priority clusters first (POS, add-ins, DB) vs full equal pass?

@@ -22,11 +22,12 @@ Inventory hundreds/thousands of legacy projects on disk `E:` (full pre-reset clo
 4. **Scan skip (phase 1):** `E:\Windows`, `E:\Program Files`, `E:\Program Files (x86)`.
 5. **Other top-level roots:** Do not bulk-skip; review with operator if noisy.
 6. **Cursor AppData / transcripts:** Valuable. Do not delete. Do not “clean up” Cursor user data as part of this job.
-7. **Languages/tools in scope:** VB6, C/C++, PHP, B4A, B4J, Java, JavaScript, VBScript, VB.NET, TwinBasic, Delphi/Pascal, SQL; VS6, modern VS, VS Code, TwinBasic IDE, B4A/B4J, Lazarus, Embarcadero Delphi, PHPRunner, AppGini.
-8. **Project detection:** Formal IDE/project files **and** loose source trees (`.bas/.frm/.cls/.pas/.php/.js/...`) **without** a project file — flag as probable projects; do **not** ignore.
+7. **Languages/tools in scope:** VB6, C/C++, PHP, B4A, B4J, Java, JavaScript, VBScript, VB.NET, TwinBasic, Delphi/Pascal, SQL, **Python**; VS6, modern VS, VS Code, TwinBasic IDE, B4A/B4J, Lazarus, Embarcadero Delphi, PHPRunner, AppGini.
+8. **Project detection:** Formal IDE/project files **and** loose source trees (`.bas/.frm/.cls/.pas/.php/.js/.py/...`) **without** a project file — flag as probable projects; do **not** ignore.
+8b. **Archives:** Also inventory compressed archives (`.zip`, `.7z`, `.rar`, `.tar`, `.gz`, `.tgz`, and similar), especially under `E:\Users\tdimi\Downloads` and other download areas. Archives may sit beside extracted folders or exist only as archives — catalog both; attempt to detect project-like content inside archives (list/peek) without requiring full extract of everything up front. Link archive ↔ extracted siblings when detectable.
 9. **Variants:** Keep all non-identical variants (different development attempts).
 10. **Exact duplicates:** Keep one; **move** extras to `E:\Dev\duplicates-quarantine\` with a keep/remove manifest. No purge until operator approves later.
-11. **Origin:** Label `authored` / `downloaded` / `unknown` using path names, vendor/site hints (vbaccelerator, vbforums, etc.), licenses, readmes, and similar. Store in catalog — **not** as folder path segments.
+11. **Origin:** Label `authored` / `downloaded` / `unknown` using path names, vendor/site hints (vbaccelerator, vbforums, etc.), licenses, readmes, and similar. Store in catalog — **not** as folder path segments. Downloads paths are a strong `downloaded` signal.
 12. **Target root:** `E:\Dev` (reorganize on E:). Optional later migration to `C:\Dev` is out of scope for phase 1–3 unless asked.
 13. **Relocation method:** **Move** (same volume), not copy.
 14. **Taxonomy:** Provisional; refine after first inventory. Create `E:\Dev\_inventory\` immediately.
@@ -84,22 +85,27 @@ Do **not** create origin-based trees like `vb6-addins\vbaccelerator\`.
    - Delphi/Lazarus: `.dpr`, `.dproj`, `.lpi`
    - B4X: `.b4a`, `.b4j`
    - Web: `composer.json`, `package.json`
+   - Python: `pyproject.toml`, `requirements.txt`, `Pipfile`, `setup.py`, `*.ipynb` clusters
    - RAD: PHPRunner / AppGini project signatures when identifiable
    - `.git` directories
    - Loose source density without project file → `probable_loose_source`
-3. Record per candidate at least:
+   - Archives: `.zip`, `.7z`, `.rar`, `.tar`, `.gz`, `.tgz`, etc. → catalog as `archive`; peek listing for project markers; note if a sibling extracted folder appears to match
+3. Pay special attention to `E:\Users\tdimi\Downloads` (and similar download trees): archives + extracted copies often coexist.
+4. Record per candidate at least:
    - id, original_path, detected_type, languages, has_git
    - size, file_count, newest_mtime
    - content/fingerprint hash for duplicate detection
    - origin_guess + origin_signals
+   - archive metadata when applicable (format, inner project markers, linked extracted path)
    - proposed_bucket (nullable until rules exist)
    - notes
-4. Build duplicate groups:
+5. Build duplicate groups:
    - exact identical → quarantine candidates
    - near variants → keep all; link as variant_group
-5. Deliverables in `_inventory`:
-   - SQLite DB (if Q12 = A or C)
-   - XLSX export (if Q12 = B or C)
+   - archive vs extracted sibling → link; do not treat as unrelated
+6. Deliverables in `_inventory`:
+   - SQLite DB (master)
+   - XLSX export
    - Markdown summary: counts by type, top clusters, scary path list, recommended next rules
 
 **Stop and report.** Do not move yet.
