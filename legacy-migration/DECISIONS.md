@@ -2,6 +2,8 @@
 
 Status: **clarifications in progress** (not ready for execution yet)
 
+Companion draft brief: [`AGENT_HANDOFF.md`](./AGENT_HANDOFF.md) — locked sections filled; open questions marked.
+
 ## Locked decisions
 
 | # | Topic | Decision |
