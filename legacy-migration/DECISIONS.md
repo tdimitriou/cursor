@@ -33,7 +33,7 @@ Companion: [`AGENT_HANDOFF.md`](./AGENT_HANDOFF.md)
 | 24 | Existing `C:\Dev` | Leave alone in phase 1; note name overlaps in catalog. |
 | 25 | Agent workspace | Local agent on `E:\Dev\_inventory`, with access to scan `E:\` (multi-root if needed). |
 
-Note: Items 19–25 were adopted as recommended defaults after the operator confirmed the major policy choices; override anytime before/during Local agent execution.
+Note: Items 19–25 were **explicitly accepted by the operator** (“accept default”). Override anytime before/during Local agent execution if needed.
 
 ## Provisional scaffold (may change after pass 1)
 
