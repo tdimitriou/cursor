@@ -56,7 +56,7 @@ Do **not** create origin-based trees like `vb6-addins\vbaccelerator\`.
 
 | ID | Topic | Suggested default (if operator says “use defaults”) |
 |---|---|---|
-| Q12 | Catalog format | **Both:** SQLite master + filterable XLSX exports |
+| Q12 | Catalog format | **LOCKED: Both** — SQLite master + XLSX exports; schema should stay friendly for a future Python web UI |
 | Q13 | How to execute scan | Prefer resumable PowerShell (or Python) scripts under `_inventory`, agent designs/runs/monitors them |
 | Q14 | Long runs | Overnight OK; must be resumable after reboot |
 | Q15 | Priority | Full inventory first; prioritize move-rule batches for POS, VB6 add-ins, DB-access |

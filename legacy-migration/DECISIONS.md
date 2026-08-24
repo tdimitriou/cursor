@@ -24,10 +24,11 @@ Companion draft brief: [`AGENT_HANDOFF.md`](./AGENT_HANDOFF.md) — locked secti
 | 14 | Copy vs move | **Move** on E: (not copy). |
 | 15 | Taxonomy | Provisional only; refine after first inventory pass. Start with `E:\Dev\_inventory\`. |
 | 16 | Move mode | **C**: auto-move only under **user-approved rules**; uncertain → propose / `unclassified`. |
+| 17 | Catalog format | **C**: SQLite as master + XLSX exports. Possible later Python web UI to browse inventory. |
 
 ## Open questions (ask user one-by-one)
 
-- [ ] Catalog format: SQLite / XLSX / both (lean: both)
+- [x] Catalog format: **C — SQLite master + XLSX exports** (may later add a small Python web UI to browse inventory)
 - [ ] Execution style: generate scripts vs interactive agent scanning
 - [ ] Overnight / resumable runs OK?
 - [ ] Priority clusters first (POS, add-ins, DB) vs full equal pass?
