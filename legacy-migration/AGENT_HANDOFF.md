@@ -1,6 +1,6 @@
 # Local Agent Handoff — Legacy project reorganization (E: → E:\Dev)
 
-**Status:** Ready for Local agent after operator confirms remaining defaults in `DECISIONS.md` (or accepts them).  
+**Status:** FINAL — ready for a Cursor **Local** Windows agent.  
 **Do not start mass moves until Phase 2 rules are approved.**
 
 **Operator:** Theodoros Dimitriou  
@@ -36,7 +36,7 @@ Inventory hundreds/thousands of legacy projects on disk `E:` (full pre-reset clo
 17. **Folder layout:** By **purpose/theme**, not by download origin.
 18. **Catalog:** SQLite master + XLSX exports; keep schema suitable for a future Python web UI.
 
-### Operational defaults (confirm in DECISIONS.md if not already)
+### Operational defaults (locked unless operator overrides)
 
 19. **Execution:** Hybrid — resumable PowerShell/Python scripts under `_inventory` for bulk work; agent for classification, judgment, reporting.
 20. **Runs:** Overnight OK; must resume after reboot using DB/script state.

@@ -1,9 +1,9 @@
 # Legacy project reorganization — decisions log
 
-Status: **Brief ready for operator confirmation of remaining defaults**  
+Status: **FINAL** — ready to hand to a Local Windows agent  
 Companion: [`AGENT_HANDOFF.md`](./AGENT_HANDOFF.md)
 
-## Locked decisions (explicitly confirmed)
+## Locked decisions
 
 | # | Topic | Decision |
 |---|---|---|
@@ -25,20 +25,15 @@ Companion: [`AGENT_HANDOFF.md`](./AGENT_HANDOFF.md)
 | 16 | Taxonomy | Provisional only; refine after first inventory pass. Start with `E:\Dev\_inventory\`. |
 | 17 | Move mode | **C**: auto-move only under **user-approved rules**; uncertain → propose / `unclassified`. |
 | 18 | Catalog format | **C**: SQLite as master + XLSX exports. Schema should stay friendly for a future Python web UI. |
+| 19 | Execution style | **Hybrid:** resumable scripts for bulk inventory; agent for classification, judgment, reports. |
+| 20 | Long runs | Overnight OK; must be **resumable** after reboot. |
+| 21 | Priority | Full inventory first; then prioritize move-rule batches for **POS**, **VB6 add-ins**, **DB-access**. |
+| 22 | Hard safety | Never empty quarantine / delete sources without explicit OK; never touch `C:\Dev` active work without asking; never wipe Windows/PF unless asked. |
+| 23 | Secrets | Do not export secret values into XLSX; record only that sensitive files exist. |
+| 24 | Existing `C:\Dev` | Leave alone in phase 1; note name overlaps in catalog. |
+| 25 | Agent workspace | Local agent on `E:\Dev\_inventory`, with access to scan `E:\` (multi-root if needed). |
 
-## Remaining defaults (please confirm or correct)
-
-These were not each answered one-by-one; they are the recommended defaults so the handoff can be used. Reply **“accept defaults”** or list changes.
-
-| ID | Topic | Recommended default |
-|---|---|---|
-| Q13 | Execution style | **Hybrid (C):** resumable scripts for bulk inventory; agent for classification, judgment, reports |
-| Q14 | Long runs | Overnight OK; must be **resumable** after reboot |
-| Q15 | Priority | Full inventory first; then prioritize move-rule batches for **POS**, **VB6 add-ins**, **DB-access** |
-| Q16 | Hard safety | Never empty quarantine / delete sources without explicit OK; never touch `C:\Dev` active work without asking; never wipe Windows/PF unless asked |
-| Q17 | Secrets | Do not export secret values into XLSX; record only that sensitive files exist |
-| Q18 | Existing `C:\Dev` | Leave alone in phase 1; note name overlaps in catalog |
-| Q19 | Agent workspace | Local agent on `E:\Dev\_inventory`, with access to scan `E:\` (multi-root if needed) |
+Note: Items 19–25 were adopted as recommended defaults after the operator confirmed the major policy choices; override anytime before/during Local agent execution.
 
 ## Provisional scaffold (may change after pass 1)
 
